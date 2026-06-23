@@ -8,7 +8,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { md5 } from '../utils/crypto';
 import { getRealHost } from '../utils/url';
 
-export const runtime = 'edge';
+//export const runtime = 'edge';
 
 // 频道映射表（数组索引）
 const CHANNEL_MAP: { [key: string]: number } = {
