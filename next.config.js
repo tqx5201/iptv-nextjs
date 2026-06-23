@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // EdgeOne Pages部署配置
-  experimental: {
+  //experimental: {
     //runtime: 'edge',
-  },
+  //},
 }
 
 module.exports = nextConfig
