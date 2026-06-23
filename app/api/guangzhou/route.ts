@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { buildApiUrl } from '../utils/url';
 
-export const runtime = 'edge';
+//export const runtime = 'edge';
 
 const CHANNELS: Record<string, string> = {
   gzzh: '31',
