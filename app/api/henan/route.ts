@@ -7,7 +7,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getRealHost } from '../utils/url';
 
-export const runtime = 'edge';
+//export const runtime = 'edge';
 
 // 频道映射表 (CID)
 const CHANNEL_MAP: { [key: string]: number } = {
