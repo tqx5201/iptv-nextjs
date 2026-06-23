@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getRealHost } from '../utils/url';
 import { xxteaDecrypt } from '../utils/crypto';
 
-export const runtime = 'edge';
+//export const runtime = 'edge';
 
 // 频道ID映射表
 const CHANNEL_MAP: Record<string, number> = {
