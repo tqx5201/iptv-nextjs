@@ -8,7 +8,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { md5 } from '../utils/crypto';
 import { getRealHost } from '../utils/url';
 
-export const runtime = 'edge';
+//export const runtime = 'edge';
 
 const CHANNEL_MAP: { [key: string]: string } = {
   'szws4k': 'R77mK1v',  // 深圳卫视4k
