@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { buildApiUrl } from '../utils/url';
 
-export const runtime = 'edge';
+//export const runtime = 'edge';
 
 const CHANNELS: Record<string, string> = {
   '109152': '新闻综合频道',
