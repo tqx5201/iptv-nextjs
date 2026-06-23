@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getRealHost } from '../utils/url';
 import { aes128CbcDecrypt, hmacSha256 } from '../utils/crypto';
 
-export const runtime = 'edge';
+//export const runtime = 'edge';
 
 // 频道配置：[liveRoomNumber, secretKey, 名称]
 const CHANNELS: Record<string, [string, string, string]> = {
