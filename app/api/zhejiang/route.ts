@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { md5 } from '../utils/crypto';
 import { buildApiUrl } from '../utils/url';
-export const runtime = 'edge';
+//export const runtime = 'edge';
 
 // 对应 mytest/zhejiang.cgi
 const CHANNELS: Record<string, string> = {
