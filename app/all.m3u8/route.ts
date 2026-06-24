@@ -282,7 +282,8 @@ export async function GET(request: NextRequest) {
   
   return new NextResponse(m3u8Content, {
     headers: {
-      'Content-Type': 'application/vnd.apple.mpegurl; charset=utf-8',
+      //'Content-Type': 'application/vnd.apple.mpegurl; charset=utf-8',
+      'Content-Type': 'text/plain; charset=utf-8',
       'Cache-Control': 'public, max-age=86400'
     }
   });
