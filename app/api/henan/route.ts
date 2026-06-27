@@ -1,6 +1,6 @@
 /**
  * 河南TV API路由
- * 支持17个河南广播电视台频道
+ * 支持河南及地区的广播电视台频道
  * Edge Runtime
  */
 
@@ -9,87 +9,53 @@ import { getRealHost } from '../utils/url';
 
 //export const runtime = 'edge';
 
-// 频道映射表 (CID)
-const CHANNEL_MAP: { [key: string]: number } = {
-  'hnws': 145,   // 河南卫视
-  'hnds': 141,   // 河南都市
-  'hnms': 146,   // 河南民生
-  'hmfz': 147,   // 河南法治
-  'hndsj': 148,  // 河南电视剧
-  'hnxw': 149,   // 河南新闻
-  'htgw': 150,   // 欢腾购物
-  'hngg': 151,   // 河南公共
-  'hnxc': 152,   // 河南乡村
-  'hngj': 153,   // 河南国际
-  'hnly': 154,   // 河南梨园
-  'wwbk': 155,   // 文物宝库
-  'wspd': 156,   // 武术世界
-  'jczy': 157,   // 睛彩中原
-  'ydxj': 163,   // 移动戏曲
-  'xsj': 183,    // 象视界
-  'gxpd': 194,   // 国学频道
-  'zz1': 197,    // 郑州新闻综合
-  'kf1': 198,    // 开封新闻综合
-  'ly1': 204,    // 洛阳新闻综合
-  'pds1': 205,   // 平顶山新闻综合
-  'ay1': 206,    // 安阳新闻综合
-  'hb1': 207,    // 鹤壁新闻综合
-  'xx1': 208,    // 新乡新闻综合
-  'jz1': 209,    // 焦作新闻综合
-  'py1': 219,    // 濮阳新闻综合
-  'xc1': 220,    // 许昌新闻综合
-  'lh1': 221,    // 漯河新闻综合
-  'smx1': 222,   // 三门峡新闻综合
-  'ny1': 223,    // 南阳新闻综合
-  'sq1': 224,    // 商丘新闻综合
-  'xy1': 225,    // 信阳新闻综合
-  'zk1': 226,    // 周口新闻综合
-  'zmd1': 227,   // 驻马店新闻综合
-  'jy1': 228     // 济源新闻综合
-};
+// 频道映射表
 
-// 频道名称映射
-const CHANNEL_NAMES: { [key: string]: string } = {
-  'hnws': '河南卫视',
-  'hnds': '河南都市',
-  'hnms': '河南民生',
-  'hmfz': '河南法治',
-  'hndsj': '河南电视剧',
-  'hnxw': '河南新闻',
-  'htgw': '欢腾购物',
-  'hngg': '河南公共',
-  'hnxc': '河南乡村',
-  'hngj': '河南国际',
-  'hnly': '河南梨园',
-  'wwbk': '文物宝库',
-  'wspd': '武术世界',
-  'jczy': '睛彩中原',
-  'ydxj': '移动戏曲',
-  'xsj': '象视界',
-  'gxpd': '国学频道',
-  'zz1': '郑州新闻综合',
-  'kf1': '开封新闻综合',
-  'ly1': '洛阳新闻综合',
-  'pds1': '平顶山新闻综合',
-  'ay1': '安阳新闻综合',
-  'hb1': '鹤壁新闻综合',
-  'xx1': '新乡新闻综合',
-  'jz1': '焦作新闻综合',
-  'py1': '濮阳新闻综合',
-  'xc1': '许昌新闻综合',
-  'lh1': '漯河新闻综合',
-  'smx1': '三门峡新闻综合',
-  'ny1': '南阳新闻综合',
-  'sq1': '商丘新闻综合',
-  'xy1': '信阳新闻综合',
-  'zk1': '周口新闻综合',
-  'zmd1': '驻马店新闻综合',
-  'jy1': '济源新闻综合'
-};
+const CHANNEL_MAP = {
+  hnws: [145, '河南卫视'],
+  hnds: [141, '河南都市'],
+  hnms: [146, '河南民生'],
+  hmfz: [147, '河南法治'],
+  hndsj: [148, '河南电视剧'],
+  hnxw: [149, '河南新闻'],
+  htgw: [150, '欢腾购物'],
+  hngg: [151, '河南公共'],
+  hnxc: [152, '河南乡村'],
+  hngj: [153, '河南国际'],
+  hnly: [154, '河南梨园'],
+  wwbk: [155, '文物宝库'],
+  wspd: [156, '武术世界'],
+  jczy: [157, '睛彩中原'],
+  ydxj: [163, '移动戏曲'],
+  xsj: [183, '象视界'],
+  gxpd: [194, '国学频道'],
+  zz1: [197, '郑州新闻综合'],
+  kf1: [198, '开封新闻综合'],
+  ly1: [204, '洛阳新闻综合'],
+  pds1: [205, '平顶山新闻综合'],
+  ay1: [206, '安阳新闻综合'],
+  hb1: [207, '鹤壁新闻综合'],
+  xx1: [208, '新乡新闻综合'],
+  jz1: [209, '焦作新闻综合'],
+  py1: [219, '濮阳新闻综合'],
+  xc1: [220, '许昌新闻综合'],
+  lh1: [221, '漯河新闻综合'],
+  smx1: [222, '三门峡新闻综合'],
+  ny1: [223, '南阳新闻综合'],
+  sq1: [224, '商丘新闻综合'],
+  xy1: [225, '信阳新闻综合'],
+  zk1: [226, '周口新闻综合'],
+  zmd1: [227, '驻马店新闻综合'],
+  jy1: [228, '济源新闻综合']
+}
+
 
 
 const SIGN_SECRET = '6ca114a836ac7d73';
-const API_URL = 'https://pubmod.hntv.tv/program/getAuth/live/class/program/11';
+//const API_URL = 'https://pubmod.hntv.tv/program/getAuth/live/class/program/11';
+const API_URL = `https://pubmod.hntv.tv/program/getAuth/channel/channelIds/1/`;
+
+
 
 /**
  * SHA256哈希
@@ -110,7 +76,7 @@ async function getStreamUrl(cid: number): Promise<string | null> {
   const sign = await sha256(SIGN_SECRET + timestamp);
 
   try {
-    const response = await fetch(API_URL, {
+    const response = await fetch(API_URL+cid, {
       headers: {
         'timestamp': timestamp.toString(),
         'sign': sign,
@@ -125,17 +91,19 @@ async function getStreamUrl(cid: number): Promise<string | null> {
 
     if (!Array.isArray(data)) return null;
 
-    // 查找对应频道
-    for (const item of data) {
-      if (item.cid === cid) {
-        const m3u8 = item.video_streams?.[0];
-        if (m3u8) {
-          return m3u8;
-        }
-      }
-    }
 
-    return null;
+	if (data && data.length > 0 && 
+		data[0].video_streams && 
+		data[0].video_streams.length > 0) {
+		
+		const playUrl = data[0].video_streams[0];
+		
+		// 返回播放地址
+		return playUrl;
+	} else {
+		return null;
+	}
+
   } catch (error) {
     console.error('Get stream URL error:', error);
     return null;
@@ -158,15 +126,16 @@ export async function GET(request: NextRequest) {
     const protocol = request.url.startsWith('https') ? 'https' : 'http';
     const baseUrl = `${protocol}://${host}/api/henan`;
 
-    for (const [cid, _] of Object.entries(CHANNEL_MAP)) {
-      const channelName = CHANNEL_NAMES[cid];
+    for (const [key, [id, name]] of Object.entries(CHANNEL_MAP)) {
+      const channelName = name;
       m3u8Content += `#EXTINF:-1,${channelName}\n`;
-      m3u8Content += `${baseUrl}?id=${cid}\n`;
+      m3u8Content += `${baseUrl}?id=${key}\n`;
     }
 
     return new NextResponse(m3u8Content, {
       headers: {
-        'Content-Type': 'application/vnd.apple.mpegurl',
+        //'Content-Type': 'application/vnd.apple.mpegurl',
+        'Content-Type': 'text/plain; charset=utf-8',
         'Cache-Control': 'public, max-age=3600',
       },
     });
@@ -183,7 +152,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const cid = CHANNEL_MAP[id];
+  const cid = CHANNEL_MAP[id][0];
 
   // 获取播放地址
   const streamUrl = await getStreamUrl(cid);
