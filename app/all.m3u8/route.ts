@@ -4,7 +4,7 @@ import { getRealHost } from '../api/utils/url';
 import chinaRegions from '../../data/china-regions.json';
 
 // 缓存配置
-const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24小时
+const CACHE_DURATION = 1 * 1 * 60 * 1000; // 24小时
 // 使用 Map 存储不同 host 的缓存
 const cacheMap = new Map<string, { data: string; timestamp: number }>();
 
