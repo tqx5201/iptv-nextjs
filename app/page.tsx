@@ -1,9 +1,8 @@
 import styles from './styles/home.module.css';
 import { headers } from 'next/headers';
 
-
-export default function Home() {
-  const headersList = headers();
+export default async function Home() {
+  const headersList = await headers();
   // 获取host（域名+端口）
   const host = headersList.get('host') || '';
   // 判断http/https
